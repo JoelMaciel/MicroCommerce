@@ -17,5 +17,24 @@
 -  OPEN FEIGN ---  ZIPKIN  ---  OPEN API (SWAGGER)
 -  KEYCLOACK --- SPRING DATA MONGODB  --- MONGODB
 -
-## Request Images
+## Request Images of Microservices Product Service
+
+### MongoDB
+![Captura de tela de 2024-01-09 10-43-07](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/cd6ffbf2-6977-470a-9a36-5d36025835df)
+
+### Messages Customaized
+![Captura de tela de 2024-01-09 10-41-55](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/bf5d507f-daf1-4fd6-a5ec-34a2afcf61cf)
+
+### Save product
+![Captura de tela de 2024-01-09 10-41-32](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/bdd73a66-4691-4bd5-93ed-61c8fe1b7255)
+### Delete
+![Captura de tela de 2024-01-09 10-41-23](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/79e8339d-a1e0-4e29-a899-2a2f6b972991)
+
+### Update
+![Captura de tela de 2024-01-09 10-41-14](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/0973fafc-9160-4ffb-8149-6b83d5b6ea08)
+
+### Get All Page Products
+![Captura de tela de 2024-01-09 10-40-54](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/9abdce30-f2f4-448f-8209-86d11be79a47)
+
+
 
