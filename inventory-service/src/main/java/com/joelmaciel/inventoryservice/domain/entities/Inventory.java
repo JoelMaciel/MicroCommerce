@@ -24,7 +24,6 @@ public class Inventory {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Type(type = "uuid-char")
     private UUID id;
-
     private String codeSku;
     private Integer quantity;
 }

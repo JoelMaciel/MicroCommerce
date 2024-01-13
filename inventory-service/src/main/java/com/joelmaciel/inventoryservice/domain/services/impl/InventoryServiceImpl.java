@@ -1,14 +1,14 @@
 package com.joelmaciel.inventoryservice.domain.services.impl;
 
-import com.joelmaciel.inventoryservice.domain.entities.Inventory;
-import com.joelmaciel.inventoryservice.domain.exceptions.InventoryNotFoundException;
+import com.joelmaciel.inventoryservice.api.dtos.response.InventoryResponseDTO;
 import com.joelmaciel.inventoryservice.domain.repositories.InventoryRepository;
 import com.joelmaciel.inventoryservice.domain.services.InventoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -18,10 +18,14 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     @Transactional(readOnly = true)
-    public boolean isInStock(String codeSku) {
-        Optional<Inventory> optionalInventory = inventoryRepository.findByCodeSku(codeSku);
-        return optionalInventory
-                .map(inventory -> inventory.getQuantity() > 0)
-                .orElseThrow(InventoryNotFoundException::new);
+    public List<InventoryResponseDTO> isInStock(List<String> codeSku) {
+        return inventoryRepository.findByCodeSkuIn(codeSku).stream()
+                .map(inventory ->
+                        InventoryResponseDTO.builder()
+                                .codeSku(inventory.getCodeSku())
+                                .inStock(inventory.getQuantity() > 0)
+                                .build()
+                ).collect(Collectors.toList());
+
     }
 }

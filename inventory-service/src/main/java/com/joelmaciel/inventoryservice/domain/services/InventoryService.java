@@ -1,6 +1,10 @@
 package com.joelmaciel.inventoryservice.domain.services;
 
+import com.joelmaciel.inventoryservice.api.dtos.response.InventoryResponseDTO;
+
+import java.util.List;
+
 public interface InventoryService {
 
-    boolean isInStock(String codeSku);
+    List<InventoryResponseDTO> isInStock(List<String> codeSku);
 }
