@@ -1,10 +1,10 @@
-package com.joelmaciel.orderservice.api.exceptionhandler;
+package com.joelmaciel.inventoryservice.api.exceptionhandler;
 
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import com.fasterxml.jackson.databind.exc.PropertyBindingException;
-import com.joelmaciel.orderservice.domain.exceptions.BusinessException;
-import com.joelmaciel.orderservice.domain.exceptions.ResourceNotFoundException;
+import com.joelmaciel.inventoryservice.domain.exceptions.BusinessException;
+import com.joelmaciel.inventoryservice.domain.exceptions.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.TypeMismatchException;
