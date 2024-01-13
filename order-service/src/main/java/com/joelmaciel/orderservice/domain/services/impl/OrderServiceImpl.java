@@ -23,9 +23,9 @@ import java.util.stream.Collectors;
 public class OrderServiceImpl implements OrderService {
 
     public static final String STOCK_NOT_FOUND = "There are no products in stock";
-    public static final String URL_INVENTORY = "http://localhost:8082/api/inventories/";
+    public static final String URL_INVENTORY = "http://inventory-service/api/inventories/";
     private final OrderRepository orderRepository;
-    private final WebClient webClient;
+    private final WebClient.Builder webClientBuilder;
 
     @Override
     @Transactional
@@ -44,7 +44,7 @@ public class OrderServiceImpl implements OrderService {
                 .map(OrderLineItems::getCodeSku)
                 .collect(Collectors.toList());
 
-        InventoryResponseDTO[] inventoryResponseDTOS = webClient.get()
+        InventoryResponseDTO[] inventoryResponseDTOS = webClientBuilder.build().get()
                 .uri(URL_INVENTORY, uriBuilder -> uriBuilder.queryParam("codeSku", codeSkuList).build())
                 .retrieve()
                 .bodyToMono(InventoryResponseDTO[].class)
