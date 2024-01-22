@@ -1,12 +1,14 @@
 package com.joelmaciel.productservice.api.exceptionhandler;
 
+
+
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import com.fasterxml.jackson.databind.exc.PropertyBindingException;
 import com.joelmaciel.productservice.domain.exceptions.BusinessException;
 import com.joelmaciel.productservice.domain.exceptions.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.apache.commons.lang.exception.ExceptionUtils;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -229,7 +231,6 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     private Problem.ProblemBuilder createProblemBuilder(HttpStatus status, ProblemType problemType, String detail) {
-
         return Problem.builder()
                 .timestamp(OffsetDateTime.now())
                 .status(status.value())

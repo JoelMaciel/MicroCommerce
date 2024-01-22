@@ -19,6 +19,11 @@
 -
 ## Request Images of Microservices Product Service
 
+### Discovery Eureka
+
+![Captura de tela de 2024-01-22 19-45-06](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/210f1123-94b5-4de7-80da-d6473aaffb16)
+
+
 ### MongoDB
 ![Captura de tela de 2024-01-09 10-43-07](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/cd6ffbf2-6977-470a-9a36-5d36025835df)
 
