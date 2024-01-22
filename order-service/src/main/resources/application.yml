@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: ORDER-SERVICE
+    name: order-service
   datasource:
     url: jdbc:mysql://${DB_HOST:localhost}:3306/orders?createDatabaseIfNotExist=true&serverTimezone=UTC
     username: ${DB_USERNAME:root}
