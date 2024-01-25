@@ -28,8 +28,8 @@ public class OrderServiceImpl implements OrderService {
     private final WebClient.Builder webClientBuilder;
 
     @Override
-    @Transactional
-    public void placeOrder(OrderRequestDTO orderRequestDTO) {
+    @Transactional(readOnly = true)
+    public String placeOrder(OrderRequestDTO orderRequestDTO) {
         Order order = new Order();
         order.setOrderNumber(UUID.randomUUID().toString());
 
@@ -55,6 +55,7 @@ public class OrderServiceImpl implements OrderService {
 
         if (allProductsInStock) {
             orderRepository.save(order);
+            return "Order completed successfully";
 
         } else {
             throw new ProductNotFoundException(STOCK_NOT_FOUND);

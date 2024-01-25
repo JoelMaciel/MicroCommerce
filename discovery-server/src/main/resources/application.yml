@@ -12,5 +12,5 @@ eureka:
 
 app:
   eureka:
-    username: ${USERNAME_EUREKA}
-    password: ${PASSWORD_EUREKA}
+    username: eureka
+    password: password
