@@ -9,6 +9,8 @@ import com.joelmaciel.orderservice.domain.exceptions.ProductNotFoundException;
 import com.joelmaciel.orderservice.domain.repository.OrderRepository;
 import com.joelmaciel.orderservice.domain.services.OrderService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cloud.sleuth.Span;
+import org.springframework.cloud.sleuth.Tracer;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -26,9 +28,10 @@ public class OrderServiceImpl implements OrderService {
     public static final String URL_INVENTORY = "http://inventory-service/api/inventories/";
     private final OrderRepository orderRepository;
     private final WebClient.Builder webClientBuilder;
+    private final Tracer tracer;
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public String placeOrder(OrderRequestDTO orderRequestDTO) {
         Order order = new Order();
         order.setOrderNumber(UUID.randomUUID().toString());
@@ -44,21 +47,28 @@ public class OrderServiceImpl implements OrderService {
                 .map(OrderLineItems::getCodeSku)
                 .collect(Collectors.toList());
 
-        InventoryResponseDTO[] inventoryResponseDTOS = webClientBuilder.build().get()
-                .uri(URL_INVENTORY, uriBuilder -> uriBuilder.queryParam("codeSku", codeSkuList).build())
-                .retrieve()
-                .bodyToMono(InventoryResponseDTO[].class)
-                .block();
+        Span inventoryServiceLookup = tracer.nextSpan().name("InventoryServiceLookup");
+        try (Tracer.SpanInScope isLookup = tracer.withSpan(inventoryServiceLookup.start())) {
+            inventoryServiceLookup.tag("call", "inventory-service");
 
-        boolean allProductsInStock = Arrays.stream(inventoryResponseDTOS)
-                .allMatch(InventoryResponseDTO::isInStock);
+            InventoryResponseDTO[] inventoryResponseDTOS = webClientBuilder.build().get()
+                    .uri(URL_INVENTORY, uriBuilder -> uriBuilder.queryParam("codeSku", codeSkuList).build())
+                    .retrieve()
+                    .bodyToMono(InventoryResponseDTO[].class)
+                    .block();
 
-        if (allProductsInStock) {
-            orderRepository.save(order);
-            return "Order completed successfully";
+            boolean allProductsInStock = Arrays.stream(inventoryResponseDTOS)
+                    .allMatch(InventoryResponseDTO::isInStock);
 
-        } else {
-            throw new ProductNotFoundException(STOCK_NOT_FOUND);
+            if (allProductsInStock) {
+                orderRepository.save(order);
+                return "Order completed successfully";
+
+            } else {
+                throw new ProductNotFoundException(STOCK_NOT_FOUND);
+            }
+        } finally {
+            inventoryServiceLookup.end();
         }
     }
 
