@@ -24,8 +24,6 @@ public class InventoryServiceImpl implements InventoryService {
     @SneakyThrows
     public List<InventoryResponseDTO> isInStock(List<String> codeSku) {
         log.info("Wait started");
-        Thread.sleep(10000);
-        log.info("Wait end");
         return inventoryRepository.findByCodeSkuIn(codeSku).stream()
                 .map(inventory ->
                         InventoryResponseDTO.builder()
