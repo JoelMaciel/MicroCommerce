@@ -21,11 +21,19 @@
 
 ### Discovery Eureka
 
-![Captura de tela de 2024-01-22 19-45-06](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/210f1123-94b5-4de7-80da-d6473aaffb16)
+![Captura de tela de 2024-01-30 17-10-07](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/ee7bd39c-69a2-4451-9f1a-8d748d77807f)
 
 ###  Traceability and Monitoring with Zipkin and Sleuth
+
+![Captura de tela de 2024-01-30 17-11-29](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/6839de0a-0b8f-4fae-b2d5-b022c67e2097)
+![Captura de tela de 2024-01-30 17-11-03](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/130e7c23-d77f-4652-a892-0f2d76fc9ba3)
 ![Captura de tela de 2024-01-25 18-16-04](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/720f09b5-57d5-4684-9147-207d596ba9b5)
-![Captura de tela de 2024-01-25 18-15-57](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/011225d7-9ffe-4e02-8b0f-ffeae0d242c4)
+
+### Documentation Swagger Open API
+![Captura de tela de 2024-01-30 17-30-50](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/a0d08f0e-7a49-40a6-a7a4-1ee2996e9356)
+![Captura de tela de 2024-01-30 17-30-27](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/e2fa0fb9-46d9-45b1-8fed-87578795e27e)
+
+
 
 
 ### Security with Keycloack
