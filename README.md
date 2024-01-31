@@ -29,6 +29,13 @@
 ![Captura de tela de 2024-01-30 17-11-03](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/130e7c23-d77f-4652-a892-0f2d76fc9ba3)
 ![Captura de tela de 2024-01-25 18-16-04](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/720f09b5-57d5-4684-9147-207d596ba9b5)
 
+### Prometheus
+![Captura de tela de 2024-01-31 19-38-04](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/be43c93e-4000-45b4-9eb3-60a8122ad9f2)
+
+### Grafana
+![Captura de tela de 2024-01-31 19-24-20](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/eefbbd7d-caa2-4c16-b789-0b58a79b7897)
+
+
 ### Documentation Swagger Open API
 ![Captura de tela de 2024-01-30 17-30-50](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/a0d08f0e-7a49-40a6-a7a4-1ee2996e9356)
 ![Captura de tela de 2024-01-30 17-30-27](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/e2fa0fb9-46d9-45b1-8fed-87578795e27e)
