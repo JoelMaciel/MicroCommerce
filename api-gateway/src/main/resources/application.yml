@@ -42,6 +42,12 @@ eureka:
   instance:
     hostname: localhost
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus
+
 logging:
   level:
     root: INFO

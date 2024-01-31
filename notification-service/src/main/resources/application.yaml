@@ -1,6 +1,6 @@
 
 server:
-  port: ${PORT:${SERVER_PORT:0}}
+  port: 8086
 
 spring:
   application:
@@ -23,6 +23,12 @@ spring:
           json:
             type:
               mapping: event:com.joelmaciel.notificationservice.api.event.OrderPlacedEvent
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus
 
 eureka:
   instance:
