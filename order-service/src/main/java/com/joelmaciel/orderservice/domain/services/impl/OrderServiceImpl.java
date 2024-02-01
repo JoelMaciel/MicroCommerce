@@ -1,5 +1,6 @@
 package com.joelmaciel.orderservice.domain.services.impl;
 
+import com.joelmaciel.orderservice.api.config.rabbitmq.Producer;
 import com.joelmaciel.orderservice.api.dtos.request.OrderListItemsRequestDTO;
 import com.joelmaciel.orderservice.api.dtos.request.OrderRequestDTO;
 import com.joelmaciel.orderservice.api.dtos.response.InventoryResponseDTO;
@@ -10,6 +11,7 @@ import com.joelmaciel.orderservice.domain.exceptions.ProductNotFoundException;
 import com.joelmaciel.orderservice.domain.repository.OrderRepository;
 import com.joelmaciel.orderservice.domain.services.OrderService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.sleuth.Span;
 import org.springframework.cloud.sleuth.Tracer;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -23,6 +25,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
@@ -32,6 +35,7 @@ public class OrderServiceImpl implements OrderService {
     private final WebClient.Builder webClientBuilder;
     private final Tracer tracer;
     private final KafkaTemplate<String, OrderPlacedEvent> kafkaTemplate;
+    private final Producer producer;
 
     @Override
     @Transactional
@@ -65,6 +69,7 @@ public class OrderServiceImpl implements OrderService {
 
             if (allProductsInStock) {
                 orderRepository.save(order);
+                sendMessage("Order send successfully");
                 kafkaTemplate.send("notificationTopic", new OrderPlacedEvent(order.getOrderNumber()));
                 return "Order completed successfully";
 
@@ -74,6 +79,12 @@ public class OrderServiceImpl implements OrderService {
         } finally {
             inventoryServiceLookup.end();
         }
+    }
+
+    private void sendMessage(String message) {
+        log.info("Message '{}' send successfully", message);
+        producer.send(message);
+
     }
 
     private OrderLineItems mapToOrderLineItem(OrderListItemsRequestDTO orderListItemsDTO) {

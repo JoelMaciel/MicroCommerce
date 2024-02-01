@@ -1,0 +1,30 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: message-service
+  zipkin:
+    base-url: 'http://localhost:9411'
+  sleuth:
+    sampler:
+      probability: 1.0
+
+orderservice:
+  queue:
+    name: orderQueue
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eureka:password@localhost:8761/eureka
