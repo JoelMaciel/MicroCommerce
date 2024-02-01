@@ -21,7 +21,7 @@
 
 ### Discovery Eureka
 
-![Captura de tela de 2024-01-30 17-10-07](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/ee7bd39c-69a2-4451-9f1a-8d748d77807f)
+![Captura de tela de 2024-02-01 15-41-22](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/44b4e1c5-ea79-4027-89a9-094bc580892f)
 
 ###  Traceability and Monitoring with Zipkin and Sleuth
 
