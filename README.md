@@ -35,6 +35,10 @@
 ### Grafana
 ![Captura de tela de 2024-01-31 19-24-20](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/eefbbd7d-caa2-4c16-b789-0b58a79b7897)
 
+### RabbitMQ
+
+![Captura de tela de 2024-02-01 15-05-54](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/1c834f75-9410-46fb-b9f4-4a5da201db63)
+
 
 ### Documentation Swagger Open API
 ![Captura de tela de 2024-01-30 17-30-50](https://github.com/JoelMaciel/MicroCommerce/assets/77079093/a0d08f0e-7a49-40a6-a7a4-1ee2996e9356)
