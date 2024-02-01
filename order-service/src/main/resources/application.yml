@@ -50,6 +50,15 @@ spring:
           json:
             type:
               mapping: event:com.joelmaciel.orderservice.api.event.OrderPlacedEvent
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+orderservice:
+  queue:
+    name: orderQueue
 
 eureka:
   instance:
